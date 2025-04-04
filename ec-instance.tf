@@ -1,6 +1,3 @@
-provider "aws" {
-  region = "ap-south-1"  # Change this to your preferred region
-}
 resource "aws_instance" "example_instance" {
   ami           = "ami-002f6e91abff6eb96"  # Replace with a valid AMI ID for your region
   instance_type = "t2.micro"

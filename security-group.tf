@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "ap-south-1"  # Change this to your preferred region
-}
-
 resource "aws_security_group" "example_sg" {
   name        = "terraform-sg"
   description = "Example security group with inbound and outbound rules"
