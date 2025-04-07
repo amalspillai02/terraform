@@ -1,0 +1,28 @@
+{
+  "provider": {
+    "aws": {
+      "region": "ap-south-1"
+    }
+  },
+  "resource": {
+    "aws_iam_user": {
+      "ec2_creator": {
+        "name": "ec2-creator-user"
+      }
+    },
+    "aws_iam_policy": {
+      "ec2_create_only": {
+        "name": "EC2CreateOnlyPolicy",
+        "description": "Policy that allows creating EC2 instances only",
+        "policy": "${file(\"ec2_create_only_policy.json\")}"
+      }
+    },
+    "aws_iam_user_policy_attachment": {
+      "attach_ec2_create_policy": {
+        "user": "${aws_iam_user.ec2_creator.name}",
+        "policy_arn": "${aws_iam_policy.ec2_create_only.arn}"
+      }
+    }
+  }
+}
+
